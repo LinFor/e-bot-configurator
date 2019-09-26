@@ -85,7 +85,11 @@ export let resources = {
         {
             id: "option-2020-x-profile",
             caption: "Альтернативный профиль оси Х (2020)",
-        }
+        },
+        {
+            id: "option-use-front-profile-for-bed-plate",
+            caption: "Дополнительный (передний) профиль стола",
+        },
     ],
     "variables": [
         {
@@ -94,24 +98,23 @@ export let resources = {
                 {
                     if: "option-body-300x300-v1-01",
                     require: [
-                        {id: "profile-A1", count: 1},
-                        {id: "profile-A2", count: 1},
-                        {id: "profile-A3", count: 1},
-                        {id: "profile-A4", count: 1},
-                        {id: "profile-B1", count: 1},
-                        {id: "profile-B2", count: 1},
-                        {id: "profile-C1", count: 1},
-                        {id: "profile-D1", count: 1},
-                        {id: "profile-D2", count: 1},
-                        {id: "profile-E1", count: 1},
-                        {id: "profile-F1", count: 1},
-                        {id: "profile-F2", count: 1},
-                        {id: "profile-F3", count: 1},
-                        {id: "profile-G1", count: 1},
-                        {id: "profile-G2", count: 1},
-                        {id: "profile-H1", count: 1},
-                        {id: "profile-H2", count: 1},
-                        {id: "profile-I1I2", count: 1},
+                        "profile-A1",
+                        "profile-A2",
+                        "profile-A3",
+                        "profile-A4",
+                        "profile-B1",
+                        "profile-B2",
+                        "profile-C1",
+                        "profile-D1",
+                        "profile-D2",
+                        "profile-E1",
+                        "profile-F1",
+                        "profile-F2",
+                        "profile-F3",
+                        "axis-X-assembly",
+                        "axis-Y-assembly",
+                        "axis-Z-assembly",
+                        "profile-I1I2",
                     ]
                 }
             ]
@@ -123,7 +126,8 @@ export let resources = {
                 {id: "profile-v-slot-2040-520mm", count: 1},
                 {id: "profile-tore-screw", count: 2},
                 {id: "profile-corner-strong", count: 2},
-                "top-front-left-corner"
+                "top-front-left-corner",
+                "bottom-corner-plate-left"
             ]
         },
         {
@@ -133,7 +137,8 @@ export let resources = {
                 {id: "profile-v-slot-2040-520mm", count: 1},
                 {id: "profile-tore-screw", count: 2},
                 {id: "profile-corner-strong", count: 2},
-                "top-rear-left-corner"
+                "top-rear-left-corner",
+                "bottom-corner-plate-right"
             ]
         },
         {
@@ -143,7 +148,8 @@ export let resources = {
                 {id: "profile-v-slot-2040-520mm", count: 1},
                 {id: "profile-tore-screw", count: 2},
                 {id: "profile-corner-strong", count: 2},
-                "top-rear-right-corner"
+                "top-rear-right-corner",
+                "bottom-corner-plate-left"
             ]
         },
         {
@@ -153,7 +159,8 @@ export let resources = {
                 {id: "profile-v-slot-2040-520mm", count: 1},
                 {id: "profile-tore-screw", count: 2},
                 {id: "profile-corner-strong", count: 2},
-                "top-front-right-corner"
+                "top-front-right-corner",
+                "bottom-corner-plate-right"
             ]
         },
         {
@@ -180,52 +187,74 @@ export let resources = {
         {
             id: "profile-D1",
             caption: "Продольный профиль D1",
-            require: {id: "profile-v-slot-2020-470mm", count: 1}
+            require: [
+                "profile-v-slot-2020-470mm",
+                {id: "profile-corner-strong", count: 2}
+            ]
         },
         {
             id: "profile-D2",
             caption: "Продольный профиль D2",
-            require: {id: "profile-v-slot-2020-470mm", count: 1}
+            require: [
+                "profile-v-slot-2020-470mm",
+                {id: "profile-corner-strong", count: 2}
+            ]
         },
         {
             id: "profile-E1",
             caption: "Нижний профиль E1",
-            require: {id: "profile-v-slot-2020-500mm", count: 1}
+            require: [
+                "profile-v-slot-2020-500mm",
+                {id: "bottom-corner-plate", count: 2},
+                {id: "profile-corner-strong", count: 4}
+            ]
         },
         {
             id: "profile-F1",
             caption: "Нижний профиль F1",
-            require: {id: "profile-v-slot-2020-460mm", count: 1}
+            require: [
+                "profile-v-slot-2020-460mm",
+                {id: "profile-corner-strong", count: 2}
+            ]
         },
         {
             id: "profile-F2",
             caption: "Нижний профиль F2",
-            require: {id: "profile-v-slot-2020-460mm", count: 1}
+            require: [
+                "profile-v-slot-2020-460mm",
+                {id: "profile-corner-strong", count: 2}
+            ]
         },
         {
             id: "profile-F3",
             caption: "Поперечный профиль F3",
-            require: {id: "profile-v-slot-2020-460mm", count: 1}
+            require: [
+                "profile-v-slot-2020-460mm",
+                {id: "profile-corner-regular", count: 2}
+            ]
         },
         {
             id: "profile-G1",
             caption: "Профиль стола G1",
-            require: {id: "profile-v-slot-2020-440mm", count: 1}
+            require: "profile-v-slot-2020-440mm"
         },
         {
             id: "profile-G2",
             caption: "Профиль стола G2",
-            require: {id: "profile-v-slot-2020-440mm", count: 1}
+            require: "profile-v-slot-2020-440mm"
         },
         {
             id: "profile-H1",
             caption: "Профиль стола H1",
-            require: {id: "profile-v-slot-2020-260mm", count: 1}
+            require: "profile-v-slot-2020-260mm"
         },
         {
             id: "profile-H2",
             caption: "Профиль стола H2",
-            require: {id: "profile-v-slot-2020-260mm", count: 1}
+            require: [
+                "profile-v-slot-2020-260mm",
+                {id:"profile-corner-light", count: 2}
+            ]
         },
         {
             id: "profile-I1I2",
@@ -293,6 +322,58 @@ export let resources = {
                         {id: "v-slot-t-block-M5", count: 2}
                     ]
                 }
+            ]
+        },
+        {
+            id: "profile-corner-regular",
+            caption: "Уголок без нагрузки",
+            variants: [
+                {
+                    if: "option-corners-plastic-2040",
+                    require: [
+                        {id: "printed-corner-2020", count: 1},
+                        {id: "screw-M5x10-DIN912", count: 2},
+                        {id: "washer-M5", count: 2},
+                        {id: "profile-nut-for-plastic-M5", count: 2}
+                    ]
+                },
+                {
+                    if: "option-corners-plastic-2020",
+                    require: [
+                        {id: "printed-corner-2020", count: 1},
+                        {id: "screw-M5x10-DIN912", count: 2},
+                        {id: "washer-M5", count: 2},
+                        {id: "profile-nut-for-plastic-M5", count: 2}
+                    ]
+                },
+                {
+                    if: "option-corners-metal-2040",
+                    require: [
+                        {id: "metal-corner-2020", count: 1},
+                        {id: "screw-M5x10-DIN912", count: 2},
+                        {id: "washer-M5", count: 2},
+                        {id: "v-slot-t-block-M5", count: 2}
+                    ]
+                },
+                {
+                    if: "option-corners-metal-2020",
+                    require: [
+                        {id: "metal-corner-2020", count: 1},
+                        {id: "screw-M5x10-DIN912", count: 2},
+                        {id: "washer-M5", count: 2},
+                        {id: "v-slot-t-block-M5", count: 2}
+                    ]
+                }
+            ]
+        },
+        {
+            id: "profile-corner-light",
+            caption: "Уголок лёгкий",
+            require: [
+                {id: "printed-corner-2020", count: 1},
+                {id: "screw-M5x10-DIN912", count: 2},
+                {id: "washer-M5", count: 2},
+                {id: "profile-nut-for-plastic-M5", count: 2}
             ]
         },
         {
@@ -421,6 +502,101 @@ export let resources = {
             ]
         },
 
+        {
+            id: "bottom-corner-plate-left",
+            caption: "Косынка левая",
+            require: [
+                "printed-corner-plate-3x3-left",
+                {id: "screw-M5x10-DIN912", count: 3},
+                {id: "washer-M5", count: 3},
+                {id: "profile-nut-for-plastic-M5", count: 3},
+            ]
+        },
+        {
+            id: "bottom-corner-plate-right",
+            caption: "Косынка левая",
+            require: [
+                "printed-corner-plate-3x3-right",
+                {id: "screw-M5x10-DIN912", count: 3},
+                {id: "washer-M5", count: 3},
+                {id: "profile-nut-for-plastic-M5", count: 3},
+            ]
+        },
+        {
+            id: "bottom-corner-plate",
+            caption: "Косынка",
+            require: [
+                "printed-corner-plate-3x3",
+                {id: "screw-M5x10-DIN912", count: 5},
+                {id: "washer-M5", count: 5},
+                {id: "profile-nut-for-plastic-M5", count: 5},
+            ]
+        },
+        {
+            id: "axis-X-assembly",
+            caption: "Ось X",
+            require: [
+                
+            ]
+        },
+        {
+            id: "axis-Y-assembly",
+            caption: "Ось Y",
+            require: [
+                
+            ]
+        },
+        {
+            id: "axis-Z-assembly",
+            caption: "Ось Z",
+            require: [
+                "axis-Z-bed-frame",
+                {id: "axis-Z-single-rod", count: 2},
+                "axis-Z-feed-screw"
+            ]
+        },
+        {
+            id: "axis-Z-single-rod",
+            caption: "Опорный вал оси Z",
+            require: [
+                "printed-zaxis-rod-holder-16mm-top",
+                "printed-zaxis-rod-holder-16mm-bottom",
+                "steel-optical-rod-16mm-500mm",
+                {id: "screw-M5x10-DIN912", count: 4},
+                {id: "washer-M5", count: 4},
+                {id: "profile-nut-for-plastic-M5", count: 4},
+                {id: "screw-М3х20-DIN912", count: 1},
+                {id: "washer-M3", count: 1},
+                {id: "nut-M3-DIN934", count: 1}
+            ]
+        },
+        {
+            id: "axis-Z-bed-frame",
+            caption: "Рама стола",
+            require: [
+                "profile-G1",
+                "profile-G2",
+                "axis-Z-bed-frame-to-rods-brackets",
+                "profile-H1",
+                {id: "profile-H2", if: "option-use-front-profile-for-bed-plate"},
+            ]
+        },
+        {
+            id: "axis-Z-bed-frame-to-rods-brackets",
+            require: [
+                "printed-zaxis-rod-bed-frame-to-rod-bracket-left",
+                "printed-zaxis-rod-bed-frame-to-rod-bracket-right",
+                {id: "bearing-lm16luu", count: 2},
+                {id: "screw-M5x10-DIN912", count: 28},
+                {id: "profile-nut-for-plastic-M5", count: 28},
+            ]
+        },
+        {
+            id: "axis-Z-feed-screw",
+            caption: "Ходовой вал",
+            require: [
+            ]
+        },
 
         {
             id: "profile-nut-for-plastic-M5",
@@ -432,7 +608,7 @@ export let resources = {
     ],
     "parts": [
         {
-            caption: "Механика",
+            caption: "Конструкционный профиль",
             contents: [
                 {
                     id: "profile-v-slot-2040-520mm",
@@ -484,15 +660,24 @@ export let resources = {
                     caption: "Профиль конструкционный 2020 (260мм)",
                     url: ""
                 },
-
+            ]
+        },
+        {
+            caption: "Механика",
+            contents: [
+                {
+                    id: "steel-optical-rod-16mm-500mm",
+                    caption: "Вал стальной полированный (Ø 16mm, длина 500мм)",
+                    url: ""
+                },
                 {
                     id: "pulley-GT2-bore-5mm-16T",
-                    caption: "Шкив ведущий GT2 16 зубов (под вал 5мм)",
+                    caption: "Шкив ведущий GT2 16 зубов (под вал Ø 5мм)",
                     url: ""
                 },
                 {
                     id: "pulley-GT2-bore-5mm-20T",
-                    caption: "Шкив ведущий GT2 20 зубов (под вал 5мм)",
+                    caption: "Шкив ведущий GT2 20 зубов (под вал Ø 5мм)",
                     url: ""
                 },
                 {
@@ -506,10 +691,15 @@ export let resources = {
                     url: ""
                 },
                 {
+                    id: "bearing-lm16luu",
+                    caption: "Линейный подшипник LM16LUU",
+                    url: ""
+                },
+                {
                     id: "motor-nema17-hs4401",
                     caption: "Шаговый двигатель NEMA17 (HS4401)",
                     url: ""
-                },        
+                },
             ]
         },
         {
@@ -599,6 +789,22 @@ export let resources = {
                     caption: "Уголок усиленный 20х40 (печатный)",
                     modelUrl: ""
                 },
+                {
+                    id: "printed-corner-plate-3x3-left",
+                    caption: "Косынка левая",
+                    modelUrl: "Plate_3x3_Left.stl"
+                },
+                {
+                    id: "printed-corner-plate-3x3-right",
+                    caption: "Косынка правая",
+                    modelUrl: "Plate_3x3_Right.stl"
+                },
+                {
+                    id: "printed-corner-plate-3x3",
+                    caption: "Косынка",
+                    modelUrl: "Plate_3x3.stl"
+                },
+
         
                 {
                     id: "printed-front-left-corner-16T",
@@ -685,6 +891,26 @@ export let resources = {
                     id: "printed-yaxis-right-caret-20T",
                     caption: "Крепление оси Y правое (шкивы 20T)",
                     modelUrl: "Y_Right_20t.stl",
+                },
+                {
+                    id: "printed-zaxis-rod-holder-16mm-top",
+                    caption: "Крепление вала оси Z верхнее",
+                    modelUrl: "Rod_Holder_Top.stl",
+                },
+                {
+                    id: "printed-zaxis-rod-holder-16mm-bottom",
+                    caption: "Крепление вала оси Z нижнее",
+                    modelUrl: "Rod_Holder_Buttom.stl",
+                },
+                {
+                    id: "printed-zaxis-rod-bed-frame-to-rod-bracket-left",
+                    caption: "Крепление стола к валу левое для профиля 2020",
+                    modelUrl: "Table2Rod_Left_2020.stl",
+                },
+                {
+                    id: "printed-zaxis-rod-bed-frame-to-rod-bracket-right",
+                    caption: "Крепление стола к валу правое для профиля 2020",
+                    modelUrl: "Table2Rod_Right_2020.stl",
                 },
 
                 {
