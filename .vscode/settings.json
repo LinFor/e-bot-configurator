@@ -1,0 +1,8 @@
+{
+    "browserSync.config": {
+        "files": ["*.html", "*.css", "*.js", "*.json"]
+    },
+    "jshint.options": {
+        "esversion": 6
+    }
+}
