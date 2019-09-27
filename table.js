@@ -21,6 +21,39 @@ export class Table {
     present(demands) {
         this.clean(false);
 
+        let getPictureLink = (demandItem) => {
+            const basePictureUrl = "https://e-bot.org/downloads/pic/";
+            if (demandItem && demandItem.pictureUrl && typeof(demandItem.pictureUrl) == "string")
+            {
+                if (demandItem.pictureUrl.startsWith("http")) {
+                    return demandItem.pictureUrl;
+                } else {
+                    return basePictureUrl + demandItem.pictureUrl;
+                }
+            }
+            return;
+        };
+
+        let getBuyLinks = (demandItem) => {
+            if (!demandItem.url || demandItem.url == "") { return []; }
+            if (!Array.isArray(demandItem.url)) { demandItem.url = [demandItem.url]; }
+
+            return demandItem.url;
+        };
+
+        let getDownloadLinks = (demandItem) => {
+            const baseModelUrl = "https://e-bot.org/downloads/parts/";
+            if (demandItem.modelUrl && typeof(demandItem.modelUrl) == "string")
+            {
+                if (demandItem.modelUrl.startsWith("http")) {
+                    return [demandItem.modelUrl];
+                } else {
+                    return [baseModelUrl + demandItem.modelUrl];
+                }
+            }
+            return [];
+        };
+
         let getRequestCaption = (request) => {
             if (!request.demand) { debugger; }
             if (!request.demand.item) { debugger; }
@@ -49,18 +82,34 @@ export class Table {
                 let row = this.tableElem.insertRow();
                 row.className = "table-primary";
                 let groupCaptionCell = row.insertCell();
-                groupCaptionCell.colSpan = 3;
+                groupCaptionCell.colSpan = 4;
                 groupCaptionCell.innerHTML = group.key;
                 group.values
                     .sort((a, b) => a.item.caption.localeCompare(b.item.caption))
                     .forEach(demand => {
                         let row = this.tableElem.insertRow();
+                        let imageCell = row.insertCell();
                         let nameCell = row.insertCell();
                         let quantityCell = row.insertCell();
                         let linksCell = row.insertCell();
-                        let imageTag = !!demand.item.pictureUrl ? "<img src='" + demand.item.pictureUrl + "' class='mr-3' alt='" + demand.item.caption + "'>" : "";
-                        nameCell.innerHTML = "<div class='media'>" + imageTag + "<div class='media-body'><h5 class='mt-0'>" + demand.item.caption + "</h5><p class='text-muted'>" + getReason(demand) + "</p></div></div>";
-                        quantityCell.innerHTML = demand.count;
+                        let imageLink = getPictureLink(demand.item);
+                        let imageTag = !!imageLink ? "<img src='" + imageLink + "' class='mr-3' alt='" + demand.item.caption + "'>" : "";
+                        imageCell.innerHTML = imageTag;
+                        let commentsTag = !!demand.item.comments ? "<p class='text-muted'>" + demand.item.comments + "</p>" : "";
+                        nameCell.innerHTML = "<div class='media'><div class='media-body'><h5 class='mt-0'>" + demand.item.caption + "</h5>" + commentsTag + "</div></div>";
+                        quantityCell.innerHTML = "<p title='" + getReason(demand) + "'>" + demand.count + "</p>";
+                        let buyLinks = getBuyLinks(demand.item);
+                        let downloadLinks = getDownloadLinks(demand.item);
+                        if (buyLinks) {
+                            linksCell.innerHTML += buyLinks
+                                .map((l, i) => "<a href='" + l + "'>BUY " + (i+1) + "</a>")
+                                .join();
+                        }
+                        if (downloadLinks) {
+                            linksCell.innerHTML += downloadLinks
+                                .map((l, i) => "<a href='" + l + "'>STL " + (i+1) + "</a>")
+                                .join();
+                        }
                     });
             });            
     }}

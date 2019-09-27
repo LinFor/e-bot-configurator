@@ -49,10 +49,15 @@ export class DemandsResolver {
     resolveSingleRequire(requireItem, requestingDemand) {
         if (typeof(requireItem) == "string") { requireItem = { id: requireItem, count: 1 }; }
         if (!this.checkIfCondition(requireItem.if)) { return; }
+        let item = repository.getById(requireItem.id);
+        if (!item) {
+            console.warn("Не удалось разрешить ссылку '" + requireItem.id + "'!!!", requestingDemand);
+            return;
+        }
 
         if (!requireItem.count) { requireItem.count = 1; }
         let demandCount = !!requestingDemand ? requireItem.count * requestingDemand.count : requireItem.count;
-        return new Demand(repository.getById(requireItem.id), demandCount, new Request(requestingDemand, demandCount));
+        return new Demand(item, demandCount, new Request(requestingDemand, demandCount));
     }
 
     resolveRequires(requireItems, requestingDemand) {

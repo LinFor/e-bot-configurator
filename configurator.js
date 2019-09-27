@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let table = new Table(document.getElementById("results-table"));
     optionSelector.onselection = () => {
         let results = resolver.collect();
-        console.log(results);
         table.present(results);
     };
 });

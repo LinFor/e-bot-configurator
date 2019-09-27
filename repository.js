@@ -1,4 +1,5 @@
 import {resources} from "./resources.js";
+import {parts} from "./resources-parts.js";
 
 export let repository = {
     get options() {
@@ -10,7 +11,7 @@ export let repository = {
     },
 
     get parts() {
-        return resources.parts.flatMap(item => {
+        return parts.flatMap(item => {
             if (item.contents) {
                 if (item.caption) {
                     item.contents.forEach(element => {

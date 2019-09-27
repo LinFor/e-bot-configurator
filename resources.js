@@ -45,6 +45,7 @@ export let resources = {
                     caption: "Шкивы GT2-20"
                 },
             ]
+
         },
         {
             id: "option-enforce-motors-with-bearings",
@@ -70,12 +71,38 @@ export let resources = {
             variants: [
                 {
                     id: "option-profile-thread-M6",
-                    caption: "Под винты M6 (отверстия в профиле Ø > 4.2мм)"
+                    caption: "M6 (отверстия в профиле Ø > 4.2мм)"
                 },
                 {
                     id: "option-profile-thread-M5",
-                    caption: "Под винты M5 (отверстия в профиле Ø ≤ 4.2мм)"
+                    caption: "M5 (отверстия в профиле Ø ≤ 4.2мм)"
                 }
+            ]
+        },
+        {
+            id: "option-zaxis-motion-type",
+            caption: "Тип привода оси Z",
+            variants: [
+                {
+                    id: "option-zaxis-motion-type-leadscrew-t8-2",
+                    caption: "Ходовой винт T8-2"
+                },
+                {
+                    id: "option-zaxis-motion-type-leadscrew-t12-2",
+                    caption: "Ходовой винт T12-2"
+                },
+                {
+                    id: "option-zaxis-motion-type-threadrod-m12",
+                    caption: "Шпилька M12"
+                },
+                {
+                    id: "option-zaxis-motion-type-ballscrew-sfu1204-end-machined",
+                    caption: "Шарико-винтовая передача SFU1204 (обработанный вал)"
+                },
+                {
+                    id: "option-zaxis-motion-type-ballscrew-sfu1204-non-machined",
+                    caption: "Шарико-винтовая передача SFU1204 (необработанный вал)"
+                },
             ]
         },
         {
@@ -258,7 +285,7 @@ export let resources = {
         },
         {
             id: "profile-I1I2",
-            caption: "Профиль оси I1/I2",
+            caption: "Профиль оси X I1/I2",
             variants: [
                 {
                     if: "option-2020-x-profile",
@@ -291,7 +318,7 @@ export let resources = {
                     require: [
                         {id: "printed-corner-2040", count: 1},
                         {id: "screw-M5x10-DIN912", count: 4},
-                        {id: "washer-M5", count: 4},
+                        {id: "washer-M5-DIN125", count: 4},
                         {id: "profile-nut-for-plastic-M5", count: 4}
                     ]
                 },
@@ -300,7 +327,7 @@ export let resources = {
                     require: [
                         {id: "printed-corner-2020", count: 1},
                         {id: "screw-M5x10-DIN912", count: 2},
-                        {id: "washer-M5", count: 2},
+                        {id: "washer-M5-DIN125", count: 2},
                         {id: "profile-nut-for-plastic-M5", count: 2}
                     ]
                 },
@@ -309,7 +336,7 @@ export let resources = {
                     require: [
                         {id: "metal-corner-2040", count: 1},
                         {id: "screw-M5x10-DIN912", count: 4},
-                        {id: "washer-M5", count: 4},
+                        {id: "washer-M5-DIN125", count: 4},
                         {id: "v-slot-t-block-M5", count: 4}
                     ]
                 },
@@ -318,7 +345,7 @@ export let resources = {
                     require: [
                         {id: "metal-corner-2020", count: 1},
                         {id: "screw-M5x10-DIN912", count: 2},
-                        {id: "washer-M5", count: 2},
+                        {id: "washer-M5-DIN125", count: 2},
                         {id: "v-slot-t-block-M5", count: 2}
                     ]
                 }
@@ -333,7 +360,7 @@ export let resources = {
                     require: [
                         {id: "printed-corner-2020", count: 1},
                         {id: "screw-M5x10-DIN912", count: 2},
-                        {id: "washer-M5", count: 2},
+                        {id: "washer-M5-DIN125", count: 2},
                         {id: "profile-nut-for-plastic-M5", count: 2}
                     ]
                 },
@@ -342,7 +369,7 @@ export let resources = {
                     require: [
                         {id: "printed-corner-2020", count: 1},
                         {id: "screw-M5x10-DIN912", count: 2},
-                        {id: "washer-M5", count: 2},
+                        {id: "washer-M5-DIN125", count: 2},
                         {id: "profile-nut-for-plastic-M5", count: 2}
                     ]
                 },
@@ -351,7 +378,7 @@ export let resources = {
                     require: [
                         {id: "metal-corner-2020", count: 1},
                         {id: "screw-M5x10-DIN912", count: 2},
-                        {id: "washer-M5", count: 2},
+                        {id: "washer-M5-DIN125", count: 2},
                         {id: "v-slot-t-block-M5", count: 2}
                     ]
                 },
@@ -360,7 +387,7 @@ export let resources = {
                     require: [
                         {id: "metal-corner-2020", count: 1},
                         {id: "screw-M5x10-DIN912", count: 2},
-                        {id: "washer-M5", count: 2},
+                        {id: "washer-M5-DIN125", count: 2},
                         {id: "v-slot-t-block-M5", count: 2}
                     ]
                 }
@@ -372,12 +399,13 @@ export let resources = {
             require: [
                 {id: "printed-corner-2020", count: 1},
                 {id: "screw-M5x10-DIN912", count: 2},
-                {id: "washer-M5", count: 2},
+                {id: "washer-M5-DIN125", count: 2},
                 {id: "profile-nut-for-plastic-M5", count: 2}
             ]
         },
         {
             id: "printed-front-left-corner",
+            caption: "Передний левый угол",
             variants: [
                 {
                     if: ["option-pulleys-16T", "option-enforce-motors-with-bearings"],
@@ -453,7 +481,7 @@ export let resources = {
             require: [
                 "printed-front-left-corner",
                 {id: "screw-M5x10-DIN912", count: 9},
-                {id: "washer-M5", count: 5},
+                {id: "washer-M5-DIN125", count: 5},
                 {id: "profile-nut-for-plastic-M5", count: 9},
                 {id: "screw-М3х8-DIN912", count: 4},
                 {id: "washer-M3", count: 4},
@@ -466,7 +494,7 @@ export let resources = {
             require: [
                 "printed-front-right-corner",
                 {id: "screw-M5x10-DIN912", count: 9},
-                {id: "washer-M5", count: 5},
+                {id: "washer-M5-DIN125", count: 5},
                 {id: "profile-nut-for-plastic-M5", count: 9},
                 {id: "screw-М3х8-DIN912", count: 4},
                 {id: "washer-M3", count: 4},
@@ -479,7 +507,7 @@ export let resources = {
             require: [
                 "printed-rear-left-corner",
                 {id: "screw-M5x10-DIN912", count: 14},
-                {id: "washer-M5", count: 14},
+                {id: "washer-M5-DIN125", count: 14},
                 {id: "profile-nut-for-plastic-M5", count: 14},
                 {id: "bearing-f623zz", count: 4},
                 {id: "screw-М3х20-DIN912", count: 2},
@@ -493,7 +521,7 @@ export let resources = {
             require: [
                 "printed-rear-right-corner",
                 {id: "screw-M5x10-DIN912", count: 14},
-                {id: "washer-M5", count: 14},
+                {id: "washer-M5-DIN125", count: 14},
                 {id: "profile-nut-for-plastic-M5", count: 14},
                 {id: "bearing-f623zz", count: 4},
                 {id: "screw-М3х20-DIN912", count: 2},
@@ -508,7 +536,7 @@ export let resources = {
             require: [
                 "printed-corner-plate-3x3-left",
                 {id: "screw-M5x10-DIN912", count: 3},
-                {id: "washer-M5", count: 3},
+                {id: "washer-M5-DIN125", count: 3},
                 {id: "profile-nut-for-plastic-M5", count: 3},
             ]
         },
@@ -518,7 +546,7 @@ export let resources = {
             require: [
                 "printed-corner-plate-3x3-right",
                 {id: "screw-M5x10-DIN912", count: 3},
-                {id: "washer-M5", count: 3},
+                {id: "washer-M5-DIN125", count: 3},
                 {id: "profile-nut-for-plastic-M5", count: 3},
             ]
         },
@@ -528,7 +556,7 @@ export let resources = {
             require: [
                 "printed-corner-plate-3x3",
                 {id: "screw-M5x10-DIN912", count: 5},
-                {id: "washer-M5", count: 5},
+                {id: "washer-M5-DIN125", count: 5},
                 {id: "profile-nut-for-plastic-M5", count: 5},
             ]
         },
@@ -552,7 +580,8 @@ export let resources = {
             require: [
                 "axis-Z-bed-frame",
                 {id: "axis-Z-single-rod", count: 2},
-                "axis-Z-feed-screw"
+                "axis-Z-feed-screw",
+                "axis-Z-endstops"
             ]
         },
         {
@@ -563,7 +592,7 @@ export let resources = {
                 "printed-zaxis-rod-holder-16mm-bottom",
                 "steel-optical-rod-16mm-500mm",
                 {id: "screw-M5x10-DIN912", count: 4},
-                {id: "washer-M5", count: 4},
+                {id: "washer-M5-DIN125", count: 4},
                 {id: "profile-nut-for-plastic-M5", count: 4},
                 {id: "screw-М3х20-DIN912", count: 1},
                 {id: "washer-M3", count: 1},
@@ -579,6 +608,21 @@ export let resources = {
                 "axis-Z-bed-frame-to-rods-brackets",
                 "profile-H1",
                 {id: "profile-H2", if: "option-use-front-profile-for-bed-plate"},
+                // Стол
+                "bed-plate-327x327x4mm",
+                "bed-plate-glass-327x327mm",
+                {id: "screw-М3х40-DIN912", count: 4},
+                {id: "washer-M3", count: 4},
+                {id: "nut-M3-DIN934", count: 4},
+                // Крепление стола
+                {id: "printed-zaxis-table-mount", count: 4},
+                {id: "screw-M5x10-DIN912", count: 8},
+                {id: "profile-nut-for-plastic-M5", count: 8},
+                // Пружины
+                {id: "spring-id4-od5-l16", count: 4},
+                {id: "washer-M3-wide", count: 8},
+                {id: "nut-M3-DIN934", count: 4},
+                {id: "table-tuning-wheel-m3", count: 4},
             ]
         },
         {
@@ -593,7 +637,189 @@ export let resources = {
         },
         {
             id: "axis-Z-feed-screw",
-            caption: "Ходовой вал",
+            caption: "Привод оси Z",
+            variants: [
+                {
+                    if: "option-zaxis-motion-type-leadscrew-t8-2",
+                    require: [
+                        "leadscrew-t8-2-450mm-with-nut",
+                        // Гайка + крепёж к раме стола
+                        {id: "screw-М3х12-DIN912", count: 4},
+                        {id: "nut-M3-DIN934", count: 4},
+                        "printed-zaxis-bed-frame-to-screw-leadscrew-t8",
+                        {id: "screw-M5x10-DIN912", count: 4},
+                        {id: "washer-M5-DIN125", count: 4},
+                        {id: "profile-nut-for-plastic-M5", count: 4},
+                        // Верхнее крепление
+                        "bearing-kp08",
+                        {id: "screw-M5x16-DIN912", count: 2},
+                        {id: "washer-M5-DIN125", count: 2},
+                        {id: "nut-M5-DIN934", count: 2},
+                        "printed-zaxis-top-screw-mount-leadscrew-t8",
+                        {id: "screw-M5x10-DIN912", count: 3},
+                        {id: "washer-M5-DIN125", count: 3},
+                        {id: "profile-nut-for-plastic-M5", count: 3},
+                        // Нижняя опора
+                        "bearing-fl08",
+                        {id: "screw-M5x16-DIN912", count: 2},
+                        {id: "washer-M5-DIN125", count: 2},
+                        {id: "nut-M5-DIN934", count: 2},
+                        "printed-zaxis-motor-mount-leadscrew-t8",
+                        {id: "screw-M5x10-DIN912", count: 4},
+                        {id: "washer-M5-DIN125", count: 4},
+                        {id: "profile-nut-for-plastic-M5", count: 4},
+                        "motor-nema17-hs4401",
+                        {id: "screw-М3х8-DIN912", count: 4},
+                        {id: "washer-M3", count: 4},
+                        "flex-shaft-coupler-5x8"
+                    ]
+                },
+                {
+                    if: "option-zaxis-motion-type-leadscrew-t12-2",
+                    require: [
+                        "leadscrew-t12-2-450mm-with-nut",
+                        // Гайка + крепёж к раме стола
+                        {id: "screw-М4х16-DIN912", count: 4},
+                        {id: "washer-M4", count: 4},
+                        {id: "nut-M4-DIN934", count: 4},
+                        "printed-zaxis-bed-frame-to-screw-leadscrew-t12",
+                        {id: "screw-M5x10-DIN912", count: 4},
+                        {id: "washer-M5-DIN125", count: 4},
+                        {id: "profile-nut-for-plastic-M5", count: 4},
+                        // Верхнее крепление
+                        "bearing-kp012",
+                        {id: "screw-M6x20-DIN912", count: 2},
+                        {id: "washer-M6-DIN125", count: 2},
+                        {id: "nut-M6-DIN934", count: 2},
+                        "printed-zaxis-top-screw-mount-leadscrew-t12-m12",
+                        {id: "screw-M5x10-DIN912", count: 2},
+                        {id: "washer-M5-DIN125", count: 2},
+                        {id: "profile-nut-for-plastic-M5", count: 2},
+                        // Нижняя опора
+                        "bearing-fl012",
+                        {id: "screw-M6x20-DIN912", count: 2},
+                        {id: "washer-M6-DIN125", count: 2},
+                        {id: "nut-M6-DIN934", count: 2},
+                        "printed-zaxis-motor-mount-leadscrew-t12-m12",
+                        {id: "screw-M5x10-DIN912", count: 4},
+                        {id: "washer-M5-DIN125", count: 4},
+                        {id: "profile-nut-for-plastic-M5", count: 4},
+                        "motor-nema17-hs4401",
+                        {id: "screw-М3х8-DIN912", count: 4},
+                        {id: "washer-M3", count: 4},
+                        "flex-shaft-coupler-5x12"
+                    ]
+                },
+                {
+                    if: "option-zaxis-motion-type-threadrod-m12",
+                    warning: "не ясно, как крепится гайка винта к кронштейну",
+                    require: [
+                        // Гайка + крепёж к раме стола
+                        "printed-zaxis-bed-frame-to-screw-leadscrew-m12",
+                        "leadscrew-m12-450mm-with-nut",
+                        {id: "screw-M5x10-DIN912", count: 4},
+                        {id: "washer-M5-DIN125", count: 4},
+                        {id: "profile-nut-for-plastic-M5", count: 4},
+                        // Верхнее крепление
+                        "bearing-kp012",
+                        {id: "screw-M6x20-DIN912", count: 2},
+                        {id: "washer-M6-DIN125", count: 2},
+                        {id: "nut-M6-DIN934", count: 2},
+                        "printed-zaxis-top-screw-mount-leadscrew-t12-m12",
+                        {id: "screw-M5x10-DIN912", count: 2},
+                        {id: "washer-M5-DIN125", count: 2},
+                        {id: "profile-nut-for-plastic-M5", count: 2},
+                        // Нижняя опора
+                        "bearing-fl012",
+                        {id: "screw-M6x20-DIN912", count: 2},
+                        {id: "washer-M6-DIN125", count: 2},
+                        {id: "nut-M6-DIN934", count: 2},
+                        "printed-zaxis-motor-mount-leadscrew-t12-m12",
+                        {id: "screw-M5x10-DIN912", count: 4},
+                        {id: "washer-M5-DIN125", count: 4},
+                        {id: "profile-nut-for-plastic-M5", count: 4},
+                        "motor-nema17-hs4401",
+                        {id: "screw-М3х8-DIN912", count: 4},
+                        {id: "washer-M3", count: 4},
+                        "flex-shaft-coupler-5x12"
+                    ]
+                },
+                {
+                    if: "option-zaxis-motion-type-ballscrew-sfu1204-end-machined",
+                    require: [
+                        "ballscrew-sfu1204-end-machined-450mm-with-22mm-nut",
+                        // Гайка + крепёж к раме стола
+                        {id: "screw-М4х20-DIN912", count: 6},
+                        {id: "washer-M4", count: 6},
+                        {id: "nut-M4-DIN934", count: 6},
+                        "printed-zaxis-bed-frame-to-screw-ballscrew-sfu1204-22mm-nut",
+                        {id: "screw-M5x10-DIN912", count: 4},
+                        {id: "washer-M5-DIN125", count: 4},
+                        {id: "profile-nut-for-plastic-M5", count: 4},
+                        // Верхнее крепление
+                        "bearing-bf10",
+                        {id: "screw-M6x45-DIN912", count: 2},
+                        {id: "washer-M6-DIN125", count: 2},
+                        {id: "nut-M6-DIN934", count: 2},
+                        "printed-zaxis-top-screw-mount-ballscrew-sfu1204-end-machined",
+                        {id: "screw-M5x10-DIN912", count: 2},
+                        {id: "washer-M5-DIN125", count: 2},
+                        {id: "profile-nut-for-plastic-M5", count: 2},
+                        // Нижняя опора
+                        "bearing-fk10",
+                        {id: "screw-М4х25-DIN912", count: 4},
+                        {id: "washer-M4", count: 4},
+                        {id: "nut-M4-DIN934", count: 4},
+                        "printed-zaxis-motor-mount-ballscrew-sfu1204-end-machined",
+                        {id: "screw-M5x10-DIN912", count: 4},
+                        {id: "washer-M5-DIN125", count: 4},
+                        {id: "profile-nut-for-plastic-M5", count: 4},
+                        "motor-nema17-hs4401",
+                        {id: "screw-М3х8-DIN912", count: 4},
+                        {id: "washer-M3", count: 4},
+                        "flex-shaft-coupler-5x8"
+                    ]
+                },
+                {
+                    if: "option-zaxis-motion-type-ballscrew-sfu1204-non-machined",
+                    require: [
+                        "ballscrew-sfu1204-non-machined-450mm-with-22mm-nut",
+                        // Гайка + крепёж к раме стола
+                        {id: "screw-М4х20-DIN912", count: 6},
+                        {id: "washer-M4", count: 6},
+                        {id: "nut-M4-DIN934", count: 6},
+                        "printed-zaxis-bed-frame-to-screw-ballscrew-sfu1204-22mm-nut",
+                        {id: "screw-M5x10-DIN912", count: 4},
+                        {id: "washer-M5-DIN125", count: 4},
+                        {id: "profile-nut-for-plastic-M5", count: 4},
+                        // Верхнее крепление
+                        "bearing-kp012",
+                        {id: "screw-M6x20-DIN912", count: 2},
+                        {id: "washer-M6-DIN125", count: 2},
+                        {id: "nut-M6-DIN934", count: 2},
+                        "printed-zaxis-top-screw-mount-leadscrew-t12-m12",
+                        {id: "screw-M5x10-DIN912", count: 2},
+                        {id: "washer-M5-DIN125", count: 2},
+                        {id: "profile-nut-for-plastic-M5", count: 2},
+                        // Нижняя опора
+                        "bearing-fl012",
+                        {id: "screw-M6x20-DIN912", count: 2},
+                        {id: "washer-M6-DIN125", count: 2},
+                        {id: "nut-M6-DIN934", count: 2},
+                        "printed-zaxis-motor-mount-leadscrew-t12-m12",
+                        {id: "screw-M5x10-DIN912", count: 4},
+                        {id: "washer-M5-DIN125", count: 4},
+                        {id: "profile-nut-for-plastic-M5", count: 4},
+                        "motor-nema17-hs4401",
+                        {id: "screw-М3х8-DIN912", count: 4},
+                        {id: "washer-M3", count: 4},
+                        "flex-shaft-coupler-5x12"
+                    ]
+                }
+            ]
+        },
+        {
+            id: "axis-Z-endstops",
             require: [
             ]
         },
@@ -603,321 +829,6 @@ export let resources = {
             require: [
                 {id: "nut-M5-square", if: "option-profile-nuts-square"},
                 {id: "v-slot-t-nut-M5", if: "option-profile-nuts-t-nuts"}
-            ]
-        }
-    ],
-    "parts": [
-        {
-            caption: "Конструкционный профиль",
-            contents: [
-                {
-                    id: "profile-v-slot-2040-520mm",
-                    caption: "Профиль конструкционный 2040 (520мм)",
-                    url: ""
-                },
-                {
-                    id: "profile-v-slot-2040-490mm",
-                    caption: "Профиль конструкционный 2040 (490мм)",
-                    url: ""
-                },
-                {
-                    id: "profile-v-slot-2040-480mm",
-                    caption: "Профиль конструкционный 2040 (480мм)",
-                    url: ""
-                },
-                {
-                    id: "profile-v-slot-2040-460mm",
-                    caption: "Профиль конструкционный 2040 (460мм)",
-                    url: ""
-                },
-                {
-                    id: "profile-v-slot-2020-500mm",
-                    caption: "Профиль конструкционный 2020 (500мм)",
-                    url: ""
-                },
-                {
-                    id: "profile-v-slot-2020-480mm",
-                    caption: "Профиль конструкционный 2020 (480мм)",
-                    url: ""
-                },
-                {
-                    id: "profile-v-slot-2020-470mm",
-                    caption: "Профиль конструкционный 2020 (470мм)",
-                    url: ""
-                },
-                {
-                    id: "profile-v-slot-2020-460mm",
-                    caption: "Профиль конструкционный 2020 (460мм)",
-                    url: ""
-                },
-                {
-                    id: "profile-v-slot-2020-440mm",
-                    caption: "Профиль конструкционный 2020 (440мм)",
-                    url: ""
-                },
-                {
-                    id: "profile-v-slot-2020-260mm",
-                    caption: "Профиль конструкционный 2020 (260мм)",
-                    url: ""
-                },
-            ]
-        },
-        {
-            caption: "Механика",
-            contents: [
-                {
-                    id: "steel-optical-rod-16mm-500mm",
-                    caption: "Вал стальной полированный (Ø 16mm, длина 500мм)",
-                    url: ""
-                },
-                {
-                    id: "pulley-GT2-bore-5mm-16T",
-                    caption: "Шкив ведущий GT2 16 зубов (под вал Ø 5мм)",
-                    url: ""
-                },
-                {
-                    id: "pulley-GT2-bore-5mm-20T",
-                    caption: "Шкив ведущий GT2 20 зубов (под вал Ø 5мм)",
-                    url: ""
-                },
-                {
-                    id: "bearing-625zz",
-                    caption: "Подшипник 625ZZ",
-                    url: ""
-                },
-                {
-                    id: "bearing-f623zz",
-                    caption: "Подшипник F623ZZ",
-                    url: ""
-                },
-                {
-                    id: "bearing-lm16luu",
-                    caption: "Линейный подшипник LM16LUU",
-                    url: ""
-                },
-                {
-                    id: "motor-nema17-hs4401",
-                    caption: "Шаговый двигатель NEMA17 (HS4401)",
-                    url: ""
-                },
-            ]
-        },
-        {
-            caption: "Крепёж",
-            contents: [
-                {
-                    id: "metal-corner-2020",
-                    caption: "Уголок 20х20 (алюминиевый)",
-                    url: ""
-                },
-                {
-                    id: "metal-corner-2040",
-                    caption: "Уголок 20х40 (алюминиевый)",
-                    url: ""
-                },
-            ]
-        },
-        {
-            caption: "Метизы",
-            contents: [
-                {
-                    id: "screw-М3х8-DIN912",
-                    caption: "Болт М3х8 DIN912",
-                    url: ""
-                },
-                {
-                    id: "screw-М3х20-DIN912",
-                    caption: "Болт М3х20 DIN912",
-                    url: ""
-                },
-                {
-                    id: "washer-M3",
-                    caption: "Шайба M3",
-                    url: ""
-                },
-                {
-                    id: "nut-M3-DIN934",
-                    caption: "Гайка М3 DIN934",
-                    url: ""
-                },
-                {
-                    id: "screw-M5x10-DIN912",
-                    caption: "Болт М5х10 DIN912",
-                    url: ""
-                },
-                {
-                    id: "screw-M5x16-DIN912",
-                    caption: "Болт М5х16 DIN912",
-                    url: ""
-                },
-                {
-                    id: "washer-M5",
-                    caption: "Шайба M5",
-                    url: ""
-                },
-                {
-                    id: "nut-M5-square",
-                    caption: "Гайка квадратная M5",
-                    url: ""
-                },
-                {
-                    id: "v-slot-t-nut-M5",
-                    caption: "Поворотная Т-гайка M5",
-                    url: ""
-                },
-                {
-                    id: "v-slot-t-block-M5",
-                    caption: "Сухарь М5",
-                    url: ""
-                },
-                {
-                    id: "screw-M6x16-DIN912",
-                    caption: "Болт М6х16 DIN912"
-                },
-            ]
-        },
-        {
-            caption: "Печатные детали",
-            contents: [
-                {
-                    id: "printed-corner-2020",
-                    caption: "Уголок 20х20 (печатный)",
-                    modelUrl: ""
-                },
-                {
-                    id: "printed-corner-2040",
-                    caption: "Уголок усиленный 20х40 (печатный)",
-                    modelUrl: ""
-                },
-                {
-                    id: "printed-corner-plate-3x3-left",
-                    caption: "Косынка левая",
-                    modelUrl: "Plate_3x3_Left.stl"
-                },
-                {
-                    id: "printed-corner-plate-3x3-right",
-                    caption: "Косынка правая",
-                    modelUrl: "Plate_3x3_Right.stl"
-                },
-                {
-                    id: "printed-corner-plate-3x3",
-                    caption: "Косынка",
-                    modelUrl: "Plate_3x3.stl"
-                },
-
-        
-                {
-                    id: "printed-front-left-corner-16T",
-                    caption: "Передний левый угол (шкивы 16T)",
-                    modelUrl: "Motor_Mount_Left_16t.stl",
-                },
-                {
-                    id: "printed-front-left-corner-20T",
-                    caption: "Передний левый угол (шкивы 20T)",
-                    modelUrl: "Motor_Mount_Left_20t.stl",
-                },
-                {
-                    id: "printed-front-left-corner-16T-bearing",
-                    caption: "Передний левый угол (шкивы 16T с подшипником)",
-                    pictureUrl: "https://e-bot.org/downloads/pic/Motor_Mount_Left_16t_b.png",
-                    modelUrl: "Motor_Mount_Left_16t_b.stl"
-                },
-                {
-                    id: "printed-front-left-corner-20T-bearing",
-                    caption: "Передний левый угол (шкивы 20T с подшипником)",
-                    modelUrl: "Motor_Mount_Left_20t_b.stl"
-                },
-        
-                {
-                    id: "printed-front-right-corner-16T",
-                    caption: "Передний правый угол (шкивы 16T)",
-                    modelUrl: "Motor_Mount_Right_16t.stl",
-                },
-                {
-                    id: "printed-front-right-corner-20T",
-                    caption: "Передний правый угол (шкивы 20T)",
-                    modelUrl: "Motor_Mount_Right_20t.stl",
-                },
-                {
-                    id: "printed-front-right-corner-16T-bearing",
-                    caption: "Передний правый угол (шкивы 16T с подшипником)",
-                    modelUrl: "Motor_Mount_Right_16t_b.stl",
-                },
-                {
-                    id: "printed-front-right-corner-20T-bearing",
-                    caption: "Передний правый угол (шкивы 20T с подшипником)",
-                    modelUrl: "Motor_Mount_Right_20t_b.stl",
-                },
-        
-                {
-                    id: "printed-rear-left-corner-16T",
-                    caption: "Задний левый угол (шкивы 16T)",
-                    modelUrl: "Rear_Idler_Left_16t.stl",
-                },
-                {
-                    id: "printed-rear-left-corner-20T",
-                    caption: "Задний левый угол (шкивы 20T)",
-                    modelUrl: "Rear_Idler_Left_20t.stl",
-                },
-        
-                {
-                    id: "printed-rear-right-corner-16T",
-                    caption: "Задний правый угол (шкивы 16T)",
-                    modelUrl: "Rear_Idler_Right_16t.stl",
-                },
-                {
-                    id: "printed-rear-right-corner-20T",
-                    caption: "Задний правый угол (шкивы 20T)",
-                    modelUrl: "Rear_Idler_Right_20t.stl",
-                },
-        
-                {
-                    id: "printed-yaxis-left-caret-16T",
-                    caption: "Крепление оси Y левое (шкивы 16T)",
-                    modelUrl: "Y_Left_16t.stl",
-                },
-                {
-                    id: "printed-yaxis-left-caret-20T",
-                    caption: "Крепление оси Y левое (шкивы 20T)",
-                    modelUrl: "Y_Left_20t.stl",
-                },
-        
-                {
-                    id: "printed-yaxis-right-caret-16T",
-                    caption: "Крепление оси Y правое (шкивы 16T)",
-                    modelUrl: "Y_Right_16t.stl",
-                },
-                {
-                    id: "printed-yaxis-right-caret-20T",
-                    caption: "Крепление оси Y правое (шкивы 20T)",
-                    modelUrl: "Y_Right_20t.stl",
-                },
-                {
-                    id: "printed-zaxis-rod-holder-16mm-top",
-                    caption: "Крепление вала оси Z верхнее",
-                    modelUrl: "Rod_Holder_Top.stl",
-                },
-                {
-                    id: "printed-zaxis-rod-holder-16mm-bottom",
-                    caption: "Крепление вала оси Z нижнее",
-                    modelUrl: "Rod_Holder_Buttom.stl",
-                },
-                {
-                    id: "printed-zaxis-rod-bed-frame-to-rod-bracket-left",
-                    caption: "Крепление стола к валу левое для профиля 2020",
-                    modelUrl: "Table2Rod_Left_2020.stl",
-                },
-                {
-                    id: "printed-zaxis-rod-bed-frame-to-rod-bracket-right",
-                    caption: "Крепление стола к валу правое для профиля 2020",
-                    modelUrl: "Table2Rod_Right_2020.stl",
-                },
-
-                {
-                    id: "v-slot-printed-block-M3",
-                    caption: "Печатный сухарь под M3",
-                    modelUrl: ""
-                },
             ]
         }
     ]
