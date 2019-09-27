@@ -484,7 +484,7 @@ export let resources = {
                 {id: "washer-M5-DIN125", count: 5},
                 {id: "profile-nut-for-plastic-M5", count: 9},
                 {id: "screw-М3х8-DIN912", count: 4},
-                {id: "washer-M3", count: 4},
+                {id: "washer-M3-DIN433", count: 4},
                 "motor-nema17-hs4401"
             ]
         },
@@ -497,7 +497,7 @@ export let resources = {
                 {id: "washer-M5-DIN125", count: 5},
                 {id: "profile-nut-for-plastic-M5", count: 9},
                 {id: "screw-М3х8-DIN912", count: 4},
-                {id: "washer-M3", count: 4},
+                {id: "washer-M3-DIN433", count: 4},
                 "motor-nema17-hs4401"
             ]
         },
@@ -511,7 +511,7 @@ export let resources = {
                 {id: "profile-nut-for-plastic-M5", count: 14},
                 {id: "bearing-f623zz", count: 4},
                 {id: "screw-М3х20-DIN912", count: 2},
-                {id: "washer-M3", count: 2},
+                {id: "washer-M3-DIN433", count: 2},
                 {id: "nut-M3-DIN934", count: 2}
             ]
         },
@@ -525,7 +525,7 @@ export let resources = {
                 {id: "profile-nut-for-plastic-M5", count: 14},
                 {id: "bearing-f623zz", count: 4},
                 {id: "screw-М3х20-DIN912", count: 2},
-                {id: "washer-M3", count: 2},
+                {id: "washer-M3-DIN433", count: 2},
                 {id: "nut-M3-DIN934", count: 2}
             ]
         },
@@ -564,14 +564,106 @@ export let resources = {
             id: "axis-X-assembly",
             caption: "Ось X",
             require: [
-                
+                "axis-X-guide",
+                "axis-X-endstop",
+            ]
+        },
+        {
+            id: "axis-X-guide",
+            require: [
+                "linear-guideway-mgn12-with-caret-h",
+                "printed-linear-guideway-mgn12-20mm",
+                {id: "screw-М3х8-DIN912", count: 17},
+                {id: "v-slot-t-nut-M3", count: 17},
+            ]
+        },
+        {
+            id: "axis-X-endstop",
+            require: [
+                "printed-xaxis-endstop-flag",
+                {id: "screw-M5x10-DIN912", count: 1},
+                {id: "washer-M5-DIN125", count: 1},
+                {id: "profile-nut-for-plastic-M5", count: 1},
+                "optical-endstop",
+                {id: "screw-М3х10-DIN912", count: 2},
+                {id: "washer-M3-DIN433", count: 2},
+                {id: "nut-M3-DIN934", count: 2},
             ]
         },
         {
             id: "axis-Y-assembly",
             caption: "Ось Y",
             require: [
-                
+                "axis-Y-left-side",
+                "axis-Y-right-side",
+                "axis-Y-endstop"
+            ]
+        },
+        {
+            id: "axis-Y-left-side",
+            require: [
+                "linear-guideway-mgn12-with-caret-h",
+                "printed-linear-guideway-mgn12-20mm",
+                "printed-linear-guideway-mgn12-35mm",
+                {id: "screw-М3х8-DIN912", count: 19},
+                {id: "v-slot-t-nut-M3", count: 19},
+                {id: "printed-yaxis-left-caret-16T", if: "option-pulleys-16T"},
+                {id: "printed-yaxis-left-caret-20T", if: "option-pulleys-20T"},
+                {id: "bearing-f623zz", count: 4},
+                {id: "screw-М3х20-DIN912", count: 2},
+                {id: "washer-M3-DIN433", count: 2},
+                {id: "nut-M3-DIN985", count: 2},
+                {id: "screw-M5x10-DIN912", count: 8},
+                {id: "screw-M5x10-DIN965", count: 2},
+                {id: "washer-M5-DIN125", count: 8},
+                {id: "profile-nut-for-plastic-M5", count: 10},
+                "printed-yaxis-mount-up-and-down",
+                {id: "screw-М3х8-DIN912", count: 4},
+                "printed-yaxis-mount-back-side",
+                {id: "screw-M5x40-DIN912", count: 4},
+                {id: "nut-M5-DIN934", count: 4},
+            ]
+        },
+        {
+            id: "axis-Y-right-side",
+            require: [
+                "linear-guideway-mgn12-with-caret-h",
+                "printed-linear-guideway-mgn12-20mm",
+                "printed-linear-guideway-mgn12-35mm",
+                {id: "screw-М3х8-DIN912", count: 19},
+                {id: "v-slot-t-nut-M3", count: 19},
+                {id: "printed-yaxis-right-caret-16T", if: "option-pulleys-16T"},
+                {id: "printed-yaxis-right-caret-20T", if: "option-pulleys-20T"},
+                {id: "bearing-f623zz", count: 4},
+                {id: "screw-М3х20-DIN912", count: 2},
+                {id: "washer-M3-DIN433", count: 2},
+                {id: "nut-M3-DIN985", count: 2},
+                {id: "screw-M5x10-DIN912", count: 8},
+                {id: "screw-M5x10-DIN965", count: 2},
+                {id: "washer-M5-DIN125", count: 8},
+                {id: "profile-nut-for-plastic-M5", count: 10},
+                "printed-yaxis-mount-up-and-down",
+                {id: "screw-М3х8-DIN912", count: 4},
+                "printed-yaxis-mount-back-side",
+                {id: "screw-M5x40-DIN912", count: 4},
+                {id: "nut-M5-DIN934", count: 4},
+            ]
+        },
+        {
+            id: "axis-Y-endstop",
+            require: [
+                "printed-yaxis-endstop-mount",
+                {id: "screw-M5x10-DIN912", count: 2},
+                {id: "washer-M5-DIN125", count: 2},
+                {id: "profile-nut-for-plastic-M5", count: 2},
+                "optical-endstop",
+                {id: "screw-М3х10-DIN912", count: 2},
+                {id: "washer-M3-DIN433", count: 2},
+                {id: "nut-M3-DIN934", count: 2},
+                "printed-yaxis-endstop-flag",
+                "screw-М3х25-DIN912",
+                "nut-M3-DIN985",
+                "nut-M3-DIN934"
             ]
         },
         {
@@ -579,6 +671,7 @@ export let resources = {
             caption: "Ось Z",
             require: [
                 "axis-Z-bed-frame",
+                "axis-Z-heated-bed",
                 {id: "axis-Z-single-rod", count: 2},
                 "axis-Z-feed-screw",
                 "axis-Z-endstops"
@@ -595,7 +688,7 @@ export let resources = {
                 {id: "washer-M5-DIN125", count: 4},
                 {id: "profile-nut-for-plastic-M5", count: 4},
                 {id: "screw-М3х20-DIN912", count: 1},
-                {id: "washer-M3", count: 1},
+                {id: "washer-M3-DIN433", count: 1},
                 {id: "nut-M3-DIN934", count: 1}
             ]
         },
@@ -608,11 +701,16 @@ export let resources = {
                 "axis-Z-bed-frame-to-rods-brackets",
                 "profile-H1",
                 {id: "profile-H2", if: "option-use-front-profile-for-bed-plate"},
-                // Стол
+            ]
+        },
+        {
+            id: "axis-Z-heated-bed",
+            caption: "Нагревательный стол",
+            require: [
                 "bed-plate-327x327x4mm",
                 "bed-plate-glass-327x327mm",
                 {id: "screw-М3х40-DIN912", count: 4},
-                {id: "washer-M3", count: 4},
+                {id: "washer-M3-DIN433", count: 4},
                 {id: "nut-M3-DIN934", count: 4},
                 // Крепление стола
                 {id: "printed-zaxis-table-mount", count: 4},
@@ -620,9 +718,9 @@ export let resources = {
                 {id: "profile-nut-for-plastic-M5", count: 8},
                 // Пружины
                 {id: "spring-id4-od5-l16", count: 4},
-                {id: "washer-M3-wide", count: 8},
+                {id: "washer-M3-DIN9021", count: 8},
                 {id: "nut-M3-DIN934", count: 4},
-                {id: "table-tuning-wheel-m3", count: 4},
+                {id: "printed-table-tuning-wheel-m3", count: 4},
             ]
         },
         {
@@ -670,7 +768,7 @@ export let resources = {
                         {id: "profile-nut-for-plastic-M5", count: 4},
                         "motor-nema17-hs4401",
                         {id: "screw-М3х8-DIN912", count: 4},
-                        {id: "washer-M3", count: 4},
+                        {id: "washer-M3-DIN433", count: 4},
                         "flex-shaft-coupler-5x8"
                     ]
                 },
@@ -680,7 +778,7 @@ export let resources = {
                         "leadscrew-t12-2-450mm-with-nut",
                         // Гайка + крепёж к раме стола
                         {id: "screw-М4х16-DIN912", count: 4},
-                        {id: "washer-M4", count: 4},
+                        {id: "washer-M4-DIN125", count: 4},
                         {id: "nut-M4-DIN934", count: 4},
                         "printed-zaxis-bed-frame-to-screw-leadscrew-t12",
                         {id: "screw-M5x10-DIN912", count: 4},
@@ -706,7 +804,7 @@ export let resources = {
                         {id: "profile-nut-for-plastic-M5", count: 4},
                         "motor-nema17-hs4401",
                         {id: "screw-М3х8-DIN912", count: 4},
-                        {id: "washer-M3", count: 4},
+                        {id: "washer-M3-DIN433", count: 4},
                         "flex-shaft-coupler-5x12"
                     ]
                 },
@@ -740,7 +838,7 @@ export let resources = {
                         {id: "profile-nut-for-plastic-M5", count: 4},
                         "motor-nema17-hs4401",
                         {id: "screw-М3х8-DIN912", count: 4},
-                        {id: "washer-M3", count: 4},
+                        {id: "washer-M3-DIN433", count: 4},
                         "flex-shaft-coupler-5x12"
                     ]
                 },
@@ -750,7 +848,7 @@ export let resources = {
                         "ballscrew-sfu1204-end-machined-450mm-with-22mm-nut",
                         // Гайка + крепёж к раме стола
                         {id: "screw-М4х20-DIN912", count: 6},
-                        {id: "washer-M4", count: 6},
+                        {id: "washer-M4-DIN125", count: 6},
                         {id: "nut-M4-DIN934", count: 6},
                         "printed-zaxis-bed-frame-to-screw-ballscrew-sfu1204-22mm-nut",
                         {id: "screw-M5x10-DIN912", count: 4},
@@ -768,7 +866,7 @@ export let resources = {
                         // Нижняя опора
                         "bearing-fk10",
                         {id: "screw-М4х25-DIN912", count: 4},
-                        {id: "washer-M4", count: 4},
+                        {id: "washer-M4-DIN125", count: 4},
                         {id: "nut-M4-DIN934", count: 4},
                         "printed-zaxis-motor-mount-ballscrew-sfu1204-end-machined",
                         {id: "screw-M5x10-DIN912", count: 4},
@@ -776,7 +874,7 @@ export let resources = {
                         {id: "profile-nut-for-plastic-M5", count: 4},
                         "motor-nema17-hs4401",
                         {id: "screw-М3х8-DIN912", count: 4},
-                        {id: "washer-M3", count: 4},
+                        {id: "washer-M3-DIN433", count: 4},
                         "flex-shaft-coupler-5x8"
                     ]
                 },
@@ -786,7 +884,7 @@ export let resources = {
                         "ballscrew-sfu1204-non-machined-450mm-with-22mm-nut",
                         // Гайка + крепёж к раме стола
                         {id: "screw-М4х20-DIN912", count: 6},
-                        {id: "washer-M4", count: 6},
+                        {id: "washer-M4-DIN125", count: 6},
                         {id: "nut-M4-DIN934", count: 6},
                         "printed-zaxis-bed-frame-to-screw-ballscrew-sfu1204-22mm-nut",
                         {id: "screw-M5x10-DIN912", count: 4},
@@ -812,7 +910,7 @@ export let resources = {
                         {id: "profile-nut-for-plastic-M5", count: 4},
                         "motor-nema17-hs4401",
                         {id: "screw-М3х8-DIN912", count: 4},
-                        {id: "washer-M3", count: 4},
+                        {id: "washer-M3-DIN433", count: 4},
                         "flex-shaft-coupler-5x12"
                     ]
                 }
@@ -820,14 +918,29 @@ export let resources = {
         },
         {
             id: "axis-Z-endstops",
+            caption: "Концевик оси Z",
             require: [
+                "printed-zaxis-endstop-mount",
+                {id: "screw-M5x10-DIN965", count: 2},
+                {id: "v-slot-t-nut-M5", count: 2},
+                "optical-endstop",
+                {id: "screw-М3х10-DIN912", count: 2},
+                {id: "washer-M3-DIN433", count: 2},
+                {id: "nut-M3-DIN934", count: 2},
+                "printed-zaxis-endstop-flag-mount",
+                {id: "screw-М3х10-DIN912", count: 1},
+                {id: "nut-M3-DIN934", count: 1},
+                "printed-zaxis-endstop-flag",
+                {id: "screw-М3х25-DIN912", count: 1},
+                {id: "nut-M3-DIN934", count: 1},
+                {id: "nut-M3-DIN985", count: 1},
             ]
         },
 
         {
             id: "profile-nut-for-plastic-M5",
             require: [
-                {id: "nut-M5-square", if: "option-profile-nuts-square"},
+                {id: "nut-M5-DIN562", if: "option-profile-nuts-square"},
                 {id: "v-slot-t-nut-M5", if: "option-profile-nuts-t-nuts"}
             ]
         }
